@@ -255,8 +255,8 @@ class Judger:
                 return current_state.winner
 
 def train(board_rows: int, board_cols: int, win_length: int, epochs: int, print_every_n=500):
-    player1 = Player(board_rows, board_cols, win_length, epsilon=0.01)
-    player2 = Player(board_rows, board_cols, win_length, epsilon=0.01)
+    player1 = Player(board_rows, board_cols, win_length, epsilon=0.05)
+    player2 = Player(board_rows, board_cols, win_length, epsilon=0.05)
     judger = Judger(player1, player2, board_rows, board_cols, win_length)
     player1_win = 0.0
     player2_win = 0.0
