@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    triggers { pollSCM('H/5 * * * *') } // Poll every 5 minutes
+    triggers {
+        githubPush()  // Listens for GitHub webhook events
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -10,4 +12,3 @@ pipeline {
         }
     }
 }
-
