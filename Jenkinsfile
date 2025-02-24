@@ -1,10 +1,13 @@
 pipeline {
-    agent { docker { image 'python:3.13.2-alpine3.21' } }
+    agent any
+    triggers { pollSCM('H/5 * * * *') } // Poll every 5 minutes
     stages {
-        stage('build') {
+        stage('Checkout') {
             steps {
-                sh 'python --version'
+                checkout scm
+                sh 'git branch'  // Debug: Show branch name
             }
         }
     }
 }
+
