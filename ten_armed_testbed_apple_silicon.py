@@ -81,11 +81,13 @@ class Bandit:
 
     def step(self, action):
         # Generate reward using float32 for better performance
-        reward = np.random.randn() + self.q_true[action]
-        self.time += 1
+        reward = np.random.randn() + self.q_true[action] ## simulating getting answer from the environment as a normal distribution of some true value
+        self.time += 1 
         self.action_count[action] += 1
-        self.average_reward += (reward - self.average_reward) / self.time
-
+        self.average_reward += (reward - self.average_reward) / self.time # moving average technique to update the reward. 
+        
+        
+        ## select one way to update the action values. 
         if self.sample_averages:
             # Vectorized update
             self.q_estimation[action] += (reward - self.q_estimation[action]) / self.action_count[action]
