@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        githubPush()  // Listens for GitHub webhook events
+        githubPush()  // Webhook trigger
     }
     stages {
         stage('Checkout') {
@@ -12,3 +12,4 @@ pipeline {
         }
     }
 }
+
